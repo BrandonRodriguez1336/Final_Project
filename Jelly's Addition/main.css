@@ -1,0 +1,38 @@
+@charset "utf-8";
+body {
+    background-image: url("https://images.unsplash.com/photo-1557683304-673a23048d34?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1700&q=80");
+    background-color: rgba(159, 232, 251, 0.42);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body {
+    color: rgba(229, 247, 255, 1.00);
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-style: normal;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-style: normal;
+}
+
+.btn,
+.btn:hover {
+    background-color: rgba(32, 199, 199, 1.00)
+}
+
+.btn-block,
+.btn-lg,
+.btn-success {
+    background-color: rgba(17, 99, 158, 1.00)
+}
+
+.jumbotron {
+    background-color: rgba(28, 17, 51, 0.83);
+}

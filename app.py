@@ -20,11 +20,11 @@ import numpy as np
 import datetime as dt
 from flask import Flask, jsonify, render_template, request, redirect, url_for, send_from_directory, request
 from flask_cors import CORS, cross_origin
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import logging
 
 import os
-import os
+
 
 warnings.filterwarnings('ignore')
 
@@ -33,19 +33,6 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.config["IMAGE_UPLOADS"] = "IMAGE_UPLOADS"
 
-# session
-# engine = create_engine(
-
-#     "postgresql://test:test@localhost:5432/ProjectTwo", echo=False)
-
-
-# Base = automap_base()
-# Base.prepare(engine, reflect=True)
-# Base.classes.keys()
-# font_recognition = Base.classes.Font_recognition
-
-# session = Session(engine)
-# end session
 
 app = Flask(__name__)
 file_handler = logging.FileHandler('server.log')
@@ -55,6 +42,8 @@ app.logger.setLevel(logging.INFO)
 PROJECT_HOME = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = '{}/uploads/'.format(PROJECT_HOME)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+model = None
 
 
 def create_new_folder(local_dir):
@@ -70,14 +59,6 @@ def welcome():
 
 
 @app.route("/upload-image", methods=["GET", "POST"])
-# def upload_image():
-#     if request.method == "POST":
-#         if request.files:
-#             image = request.files["image"]
-#             image.save(os.path.join(
-#                 app.config["IMAGE_UPLOADS"], image.filename))
-#             print("Image saved")
-#             return redirect("/")
 def api_root():
 
     if request.method == 'POST' and request.files['image']:
@@ -86,22 +67,46 @@ def api_root():
         img_name = secure_filename(img.filename)
         # ----> we create the uploads folder
         create_new_folder(app.config['UPLOAD_FOLDER'])
-        saved_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
-        # app.logger.info("saving {}".format(saved_path))
-        img.save(saved_path)  # ----> saves the image inside the folder
+        image_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
+        # app.logger.info("saving {}".format(image_path))
+        img.save(image_path)  # ----> saves the image inside the folder
         # score = pred_score  # ----> soon your machine learning score when u predict
 
-        # get value
-        # values = session.query(font_recognition.arial).all()
-        # list = []
-        # for value in values:
-        #     dict_values = {"Font": value[0]}
-        #     list.append(dict_values)
-        pred_score = 0
-        return "This is your predicted score " + str(pred_score)
+        # parse the image path inside tensors or rgb array. D:\\image.png ---> [[0,1,2], [2,1,3].....]
+        # https://www.tensorflow.org/tutorials/load_data/images#performance
+        
+    
+        image_path2 = 'C:\\Users\\ca25935\\Desktop\\UCD Data Analytics\\Final Project\\Final Project\\Final Project Repo\\Final_Project\\uploads\\'
+        image_path2 = image_path2 + str(img_name)
+
+        def load_image(img_path, show=False):
+
+            img = image.load_img(img_path, target_size=(300, 300))
+            img_tensor = image.img_to_array(img)                    # (height, width, channels)
+            img_tensor = np.expand_dims(img_tensor, axis=0)         # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
+            return img_tensor
+
+        new_image = load_image(image_path2)
+    
+       
+        # prepare the image data (whatever you guys had on the ipynb) [[0,1,2], [2,1,3].....] ---> maybe you convert to 224 x 224
+        #  
+        #                                                                                      [  Arial, Sans, y, x]
+        score = model.predict(new_image)
+        # score = model.predict(image_path_in_array_format_rgb) #--> this should return a array of floats [ 0.2, 0.3, 0.4, 0.1]
+
+        # return  y(our font predicted) --> highest probability that the model had predicted
+        # include also the prediction score
+        # font_predicted = y
+        # prediction_score = max(score) * 100  # [ 0.2, 0.3, 0.4, 0.1] --> 40%
+
+        return f"This is your predicted score 0  {score}"
+        # return "This is your predicted score " + f"font predicted is {font_predicted} with confidence of {prediction_score}% "
     else:
         return "Where is the image?"
 
 
 if __name__ == "__main__":
+    # Load the h5 model that you have trained, before running the server
+    model = load_model("Font_detector.h5")
     app.run(debug=True)

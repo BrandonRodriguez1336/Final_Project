@@ -52,7 +52,7 @@
               <p class="mb-0">The importance of fonts and typefaces is something understood by all designers and consumers alike even if they don't necessarily recognize it. As much as a good design rests on the visual artistic abilities of the designer, it's hard to get a clear and concise message across without words. </p>
               <p class="mb-0">&nbsp;</p>
               <p class="mb-0">Fonts act as the voice of design. With the the varying styles of typefaces, the tone of a message can change completely. When that voice matches perfectly with the message, it is seamless to the viewer and usually goes unnoticed. That's what good design is: invisible. Learning how to pair fonts and which ones evoke certain feelings is acquired over time as a designer, but tools like this can help people        better understand what differences one should be looking for to begin with.</p>
-<p class="mb-0">&nbsp;</p>
+			<p class="mb-0">&nbsp;</p>
               <p class="mb-0">This is why we start off with a basic classification such as serif versus sans serif.</p>
               <p class="mb-0">&nbsp;</p>
               <p class="mb-0">Below, is a quick overview of the basic differences between these two broad classifications, so that you might be able to preemptively guess a font type to then see if our machine can match your guess!&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
@@ -67,18 +67,31 @@
   		</div>
       <div class="jumbotron">
         <div class="container">
+			<div class="row">
+				<div class="col-12 mb-2 text-center">
+					<h1>Upload</h1>
+				</div>
+			</div>
           <div class="row">
             <div class="text-center col-md-8 col-12 mx-auto">
               <p class="lead">Here you can help train our machine and see if it can identify whether your font is serif or sans serif! Please make sure your file is either BMP, JPEG, or PNG and less than 100MB.</p>
             </div>
           </div>
-			<div class="row">
-            <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="#" title="">Browse Files</a> </div>
-          </div>
-          <p><div class="row">
-            <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="#" title="">Upload Your Image</a> </div>
-          </div>
-			</p>
+			<form action="/upload-image" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group" align="center">
+              <label>Select image</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="image">
+                <label class="custom-file-label" for="image">Browse Files...</label>
+              </div>
+            </div>
+			<div class="row" align="center">
+				<div class="col-12 mb-2 text-center">
+					<button type="submit" class="btn btn-primary" align="center">Upload</button>
+				</div>
+			</div>
+          </form>
         </div>
       </div>
       <div class="container">
@@ -104,11 +117,11 @@
       <div class="container ">
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/140X140.gif" data-holder-rendered="true">
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/IMG_3601.JPG" data-holder-rendered="true">
             <h3>Lucine</h3>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/140X140.gif" data-holder-rendered="true">
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/pics.jpg" data-holder-rendered="true">
             <h3>Armine</h3>
           </div>
           <div class="col-lg-3 col-md-6 col-sm-12 text-center">
@@ -116,7 +129,7 @@
             <h3>Angelica</h3>
           </div>
 		<div class="col-lg-3 col-md-6 col-sm-12 text-center">
-            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/140X140.gif" data-holder-rendered="true">
+            <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/Brandon website pic.png" data-holder-rendered="true">
             <h3>Brandon</h3>
           </div>
         </div>

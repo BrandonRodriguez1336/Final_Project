@@ -103,9 +103,11 @@
         <div class="row">
           <div class="col-sm-12 col-lg-12">
             
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt impedit est voluptatem doloremque architecto corporis suscipit quidem ratione! Quis laborum nam optio dolorem doloremque ex nobis quibusdam ad quo dolores? </p>
-           
-        </div>
+            <p> We began our project by collecting font image data from a Kaggle dataset for sans and sans-serif after looking through Google API and Adobe Typekit API for fonts. Next, we studied some Convolutional Neural Network (CNN) model architecture that we could use to classify such as the number of convolutional layers, pooling layers, number of dense nodes for our binary classification problem. </p>
+         
+            <p>The model architecture we used to solve this classification problem was 3 convolutional layers, with 128 dense nodes in the fully connected layer. In addition, we use applied ‘dropout’ to .5 to help reduce overfitting during training which is where 50% of the neurons are randomly turned off during training. We also used ‘early stopping’ in Keras which allows you to specify the performance measure to monitor and trigger. Once triggered, it will end the training process. We focused on ‘val_loss’ with a ‘patience’ of 2, which means number of epochs with no improvement after which training will be stopped. Other hyperparameters included selecting a batch size of 16. </p>
+            <p>After training our mode-- which took 11 epoch-- the model achieved 95% accuracy during training. When we reviewed the classification report we found the precision performance of when the model predicts yes how often is it correct. Our precision score was 94% for sans serif whereas serif scored at 99% precision. </p>
+          </div>
       </div>
 	<div class="container">
         <div class="row">
@@ -138,7 +140,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Copyright © Lucine, rmine, Angelica, and Brandon. All rights reserved.</p>
+            <p>Copyright © Lucine, Armine, Angelica, and Brandon. All rights reserved.</p>
           </div>
         </div>
       </div>

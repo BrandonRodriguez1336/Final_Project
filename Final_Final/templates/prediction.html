@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> Thank You. Here is the Information You Gave:</h1>
+
+	<h1>Our model is predicting the font belongs to the <b>{{ prediction }}</b> font family.</h1>
+
+    {% if 'Sans-Serif' in prediction %}
+	  <p><h2>Here's an example of a Sans-Serif font.</h2></p>
+	  <img src="../static/images/LeaWoodStd.jpg">
+    {% else %}
+	<p><h2>Here's an example of a Sans font.</h2></p>
+	  <img src="../static/images/AntiqueOliveStd.jpg">
+    {% endif %}
+
+
+{% endblock %}

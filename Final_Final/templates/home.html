@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="../static/css/bootstrap-4.4.1.css" rel="stylesheet">
+<link href="../static/css/main.css" rel="stylesheet" type="text/css">
+<header>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-center">Font Recognition</h1>
+          <p class="text-center">A Machine Learning project for UC Davis Data Analytics Bootcamp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container">  
+    <div class="row">
+      <div class="col-sm-12 mt-4 mb-2 text-center">
+        <h2>Our Purpose</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-lg-12 text-center">
+        <blockquote class="blockquote">
+          <p class="mb-0">When embarking on this project, we had the intention of helping designers of all expertise levels in mind. With this tool if it were to be built upon, it could serve as both an asset for pro designers looking to identify a font that they came across as well as a learning application for beginner designers.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+        </blockquote>
+      </div>
+      <div class="col-sm-6 col-lg-6">
+        <blockquote class="blockquote">
+          <p class="mb-0">The importance of fonts and typefaces is something understood by all designers and consumers alike even if they don't necessarily recognize it. As much as a good design rests on the visual artistic abilities of the designer, it's hard to get a clear and concise message across without words. Fonts act as the voice of design. With the the varying styles of typefaces, the tone of a message can change completely. When that voice matches perfectly with the message, it is seamless to the viewer and usually goes unnoticed. That's what good design is: invisible. Learning how to pair fonts and which ones evoke certain feelings is acquired over time as a designer, but tools like this can help people        better understand what differences one should be looking for to begin with.</p>
+          <p class="mb-0">&nbsp;</p>
+          <p class="mb-0">This is why we start off with a basic classification such as serif versus sans serif.&nbsp; &nbsp;</p>
+        </blockquote>
+      </div>
+        <div class="col-sm-6 col-lg-6">
+          <img src="../static/images/fontsample.png">
+        </div>
+        <div class="col-sm-12 col-lg-12">
+        <img src="../static/images/sans_v_serif.png" align="middle">
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="text-center col-md-8 col-12 mx-auto">
+          <p class="lead">Here you can help train our machine and see if it can identify whether your font is serif or sans serif! Please make sure your file is either BMP, JPEG, or PNG and less than 100MB.</p>
+        </div>
+      </div>
+  <div class="row">
+    <div class="col-sm-4 col-auto mx-auto">
+
+    
+    <form action="/upload-image" method="POST" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <!-- <label>Select image</label> -->
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="image" id="image">
+          <label class="custom-file-label" for="image"></label>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Upload</button>
+
+    </form>
+  </div>
+</div>
+
+        <!-- <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="#" title="">Browse Files</a> </div>
+      </div> -->
+      <!-- <p><div class="row">
+        <div class="col-sm-4 col-auto mx-auto"> <a class="btn btn-block btn-lg btn-success" href="#" title="">Upload Your Image</a> </div>
+      </div> -->
+  </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mb-2 text-center">
+        <h2>Our Process&nbsp;</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+        
+        <p><blockquote class="blockquote">
+           We began our project by collecting font image data from a Kaggle dataset for sans and sans-serif after looking through Google API and Adobe Typekit API for fonts. Next, we studied some Convolutional Neural Network (CNN) model architecture that we could use to classify such as the number of convolutional layers, pooling layers, number of dense nodes for our binary classification problem.
+          The model architecture we used to solve this classification problem was 3 convolutional layers, with 128 dense nodes in the fully connected layer. In addition, we use applied ‘dropout’ to .5 to help reduce overfitting during training which is where 50% of the neurons are randomly turned off during training. We also used ‘early stopping’ in Keras which allows you to specify the performance measure to monitor and trigger, and once triggered it will end the training process. We focused on ‘val_loss’ with a ‘patience’ of 2, which means number of epochs with no improvement after which training will be stopped. Other hyperparameters included selecting a batch size of 16.
+          After training our model which took 11 epochs the model achieved 95% accuracy during training. When we reviewed the classification report we found the precision performance of when the model predicts   yes how often is it correct. Our precision score was 94% for sans serif whereas serif scored at 99% precision. 
+        </blockquote></p>
+       
+    </div>
+  </div>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-4 mt-2 text-center">
+        <h2>The Team</h2>
+      </div>
+    </div>
+</div>
+  <div class="container ">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../static/profile pictures/Lucine_IMG_3601.jpg" data-holder-rendered="true">
+        <h3>Lucine</h3>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../static/profile pictures/Armine.jpg" data-holder-rendered="true">
+        <h3>Armine</h3>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../static/profile pictures/Jelly_IMG_2189crop.jpg" data-holder-rendered="true">
+        <h3>Angelica</h3>
+      </div>
+<div class="col-lg-3 col-md-6 col-sm-12 text-center">
+        <img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="../static/profile pictures/Brandon website pic.png" data-holder-rendered="true">
+        <h3>Brandon</h3>
+      </div>
+    </div>
+<hr>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Copyright © Angelica Ramos, Lucine Mkrtchyan, Armine Grigoryan, Brandon Rodriguez. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="../static/js/jquery-3.4.1.min.js"></script> 
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="../static/js/popper.min.js"></script> 
+<script src="../static/js/bootstrap-4.4.1.js"></script>
+{% endblock %}
